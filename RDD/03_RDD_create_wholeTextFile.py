@@ -1,0 +1,1 @@
+from pyspark import SparkConf, SparkContextif __name__ == "__main__":    conf = SparkConf().setAppName("test").setMaster("local[*]")    sc = SparkContext(conf=conf)    rdd = sc.wholeTextFiles("../data/tiny_files")    # default print to get the Path:Value of each file    print(rdd.collect())    # print all content of each file    print(rdd.map(lambda x: x[1]).collect())
